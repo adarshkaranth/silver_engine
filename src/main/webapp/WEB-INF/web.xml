@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         id="WebApp_ID" version="4.0">
+
+    <display-name>Struts2 Application</display-name>
+
+    <!-- Configuration for Struts 2 -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Welcome file list -->
+    <welcome-file-list>
+        <welcome-file>/views/login.jsp</welcome-file>
+    </welcome-file-list>
+    
+    <!-- Encoding filter -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- JSP servlet mapping -->
+    <servlet>
+        <servlet-name>JspServlet</servlet-name>
+        <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+        <init-param>
+            <param-name>fork</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>xpoweredBy</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JspServlet</servlet-name>
+        <url-pattern>*.jsp</url-pattern>
+    </servlet-mapping>
+    <context-param>
+	    <param-name>javax.servlet.context.path</param-name>
+	    <param-value>/course_registartion</param-value>
+	</context-param>
+	
+	<!-- Other configurations -->
+    
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/tags/struts-tags</taglib-uri>
+            <taglib-location>/WEB-INF/tags/struts-tags.tld</taglib-location>
+        </taglib>
+        <taglib>
+	        <taglib-uri>/tags/c</taglib-uri>
+	        <taglib-location>/WEB-INF/tags/c.tld</taglib-location>
+	    </taglib>
+    </jsp-config>
+     
+</web-app>
